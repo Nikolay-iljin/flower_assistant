@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="GET" action="">
+    <input type="text" name="query_text" placeholder="Поиск цветка или категории..." value="{{ query }}">
+    <button type="submit">Найти</button>
+</form>
+
+<h2>Результаты:</h2>
+<ul>
+    {% for flower in results %}
+        <li>
+            <strong>{{ flower.name }}</strong>
+            (Категория: <em>{{ flower.cat.name }}</em>)
+        </li>
+    {% empty %}
+        <li>
+            {% if query %}
+                Ничего не найдено по запросу "{{ query }}".
+            {% else %}
+                Введите название цветка или категории для поиска.
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -24,7 +24,24 @@ class Flowers(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_slug': self.slug})
+
     def save(self, *args, **kwargs):  # формируем slug на основе заголовка
         self.slug = slugify(translit_to_eng(self.name))
         super().save(*args, **kwargs)
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'cat_slug': self.slug})
+
+    def save(self, *args, **kwargs):  # формируем slug на основе заголовка
+        self.slug = slugify(translit_to_eng(self.name))
+        super().save(*args, **kwargs)

@@ -1,12 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
 <h1>{{ title }}</h1>
 <div class="content">
     {% for m in posts %}
         <h2>{{ m.title }}</h2>
         <p>{{ m.content }} {{ m.title }}</p>
-
+        <p><a href="{{ m.get_absolute_url }}">Читать пост</a></p>
 {% if not forloop.last%}
     <hr>
 {% endif %}
 {% endfor %}
 
 </div>
+
+{% endblock %}

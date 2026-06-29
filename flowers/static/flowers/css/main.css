@@ -1,0 +1,41 @@
+{% load static %}
+{% load flowers_category %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'flowers/css/main.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+<header>
+    <nav>
+        {% for m in menu %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        {% endfor %}
+    </nav>
+</header>
+<aside>
+    <div class="category">
+        <ul>
+            {% if cat_select == 0 %}
+                <li><a class="select" href="{% url 'index' %}">Все категории</a></li>
+            {% else %}
+                <li><a href="{% url 'index' %}">Все категории</a></li>
+            {% endif %}
+            <li>{% flower_category cat_select %}</li>
+        </ul>
+    </div>
+</aside>
+<main>
+    <div class="content-text">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+<footer></footer>
+</body>
+</html>

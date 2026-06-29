@@ -22,3 +22,24 @@ def index(request):
             'cat_select': 0,
             }
     return render(request, 'flowers/index.html', data)
+
+
+def about(request):
+    data = {'title': 'О нас',
+            'menu': menu,
+            'posts': data_db}
+    return render(request, 'flowers/about.html', data)
+
+
+def add_page(request):
+    data = {'title': 'Добавить страницу',
+            'menu': menu,
+            'posts': data_db}
+    return render(request, 'flowers/about.html', data)
+
+
+def contacts(request):
+    data = {'title': 'Контакты (обратная связь)',
+            'menu': menu,
+            'posts': data_db}
+    return render(request, 'flowers/contacts.html', data)

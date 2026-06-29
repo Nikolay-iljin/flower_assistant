@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.db.models import Q
+from django.db.models.functions import Lower
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from flowers.models import Flowers
 
 menu = [{'title': "Главная страница", 'url_name': 'index'},
         {'title': "О сайте", 'url_name': 'about'},
@@ -14,7 +18,6 @@ data_db = [{'id': 1, 'title': 'Крапива', 'content': 'Какая то ин
 
 
 def index(request):
-    # post = Flowers.objects.all()
     post = data_db
     data = {'title': 'Главная страница',
             'posts': post,
@@ -43,3 +46,10 @@ def contacts(request):
             'menu': menu,
             'posts': data_db}
     return render(request, 'flowers/contacts.html', data)
+
+
+def show_post(request, post_slug):
+    pass
+
+def show_category(request, cat_slug):
+    pass

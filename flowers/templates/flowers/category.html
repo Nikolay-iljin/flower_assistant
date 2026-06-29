@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for cat in posts %}
+    {% if cat.id == cat_select %}
+        <li class="select">{{cat.name}}</li>
+    {% else %}
+        <li><a href="{{ cat.get_absolute_url }}">{{cat.name}}</a></li>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
+

@@ -13,9 +13,10 @@
 <body>
 <header>
     <nav>
-        {% for m in menu %}
+        {% for m in mainmenu %}
         <a href="{% url m.url_name %}">{{ m.title }}</a>
         {% endfor %}
+        <a href="{% url 'users:login' %}">Войти</a>
     </nav>
 </header>
 <aside>

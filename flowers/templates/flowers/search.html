@@ -11,7 +11,7 @@
     {% for flower in results %}
         <li>
             <strong><a href="{% url 'post' flower.slug %}">{{ flower.name }}</a></strong>
-            (Категория: <em>{{ flower.cat.name }}</em>
+            (Категория: <em>{{ flower.cat.name }})</em>
         </li>
     {% empty %}
         <li>

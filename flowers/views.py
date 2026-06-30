@@ -7,16 +7,12 @@ from flowers.forms import ProductFilterForm, AddPageForm
 from flowers.models import Flowers, Category
 
 menu = [{'title': "Главная страница", 'url_name': 'index'},
-        {'title': "О сайте", 'url_name': 'about'},
         {'title': "Добавить статью", 'url_name': 'add_page'},
+        {'title': "О сайте", 'url_name': 'about'},
         {'title': "Обратная связь", 'url_name': 'contact'},
         {'title': "Поиск", 'url_name': 'search'},
         # {'title': "Войти", 'url_name': 'login'}   переделали в шаблоне base.html
         ]
-
-data_db = [{'id': 1, 'title': 'Крапива', 'content': 'Какая то информация об этом цветке - '},
-           {'id': 2, 'title': 'Борщевик', 'content': 'Какая то информация об этом цветке - '},
-           {'id': 3, 'title': 'Кактус', 'content': 'Какая то информация об этом цветке - '}]
 
 
 def index(request):
@@ -30,16 +26,14 @@ def index(request):
 
 
 def about(request):
-    data = {'title': 'О нас',
-            'menu': menu,
-            'posts': data_db}
+    data = {'title': 'О сайте:',
+            'menu': menu}
     return render(request, 'flowers/about.html', data)
 
 
 def contacts(request):
     data = {'title': 'Контакты (обратная связь)',
-            'menu': menu,
-            'posts': data_db}
+            'menu': menu}
     return render(request, 'flowers/contacts.html', data)
 
 
@@ -86,7 +80,11 @@ def flower_search(request):
     else:
         results = all_flowers
 
-    return render(request, 'flowers/search.html', {'results': results, 'query': request.GET.get('query_text', '')})
+    data = {'title': 'Поиск:',
+            'menu': menu,
+            'results': results,
+            'query': request.GET.get('query_text', '')}
+    return render(request, 'flowers/search.html', data)
 
 
 def add_page(request):

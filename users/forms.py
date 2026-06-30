@@ -4,8 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(max_length=20)
-    password = forms.CharField(max_length=20)
+    username = forms.CharField(max_length=20, label='Логин')
+    password = forms.CharField(max_length=20, label='Пароль')
 
     class Meta():
         model = get_user_model()

@@ -14,20 +14,39 @@ header{
 }
 
 header nav a{
-    left:200px;
+    left: 90px;
     top: 0px;
     font-weight: bold;
     position: relative;
     font-size: 30px;
     color: #FF8C00;
-    padding-right: 100px;
+    padding-right: 70px;
     text-decoration: none;
 }
+
+header nav .last{
+    display: inline-block;
+    margin-left: 30px;
+    padding-right: 0px;
+    color: #00CED1;
+    font-size: 25px;
+}
+
+header nav .last:hover {
+    transform: scale(1.05);
+}
+
+header nav .last + .last::before {
+    content: "|";
+    padding-right: 10px;
+    margin-left: -15px;
+    color: #00CED1;
+}
+
 .content {
     color: black;
     border-bottom: 1px solid #DDA0DD;
 }
-
 
 .content-text {
     margin-left: 380px;

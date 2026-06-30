@@ -14,12 +14,12 @@
 <header>
     <nav>
         {% for m in mainmenu %}
-            <a href="{% url m.url_name %}">{{ m.title }}</a>
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
         {% endfor %}
         {% if user.is_authenticated %}
-            <a class="last">{{ user.username }}</a> | <a href="{% url 'users:logout' %}">Выйти</a>
+        <a class="last">{{ user.username }}</a> | <a href="{% url 'users:logout' %}">Выйти</a>
         {% else %}
-            <a class="last" href="{% url 'users:login' %}">Войти</a><a class="last" href="#">Регистрация</a>
+        <a class="last" href="{% url 'users:login' %}">Войти</a><a class="last" href="{% url 'users:register' %}">Регистрация</a>
         {% endif %}
 
 
@@ -29,9 +29,9 @@
     <div class="category">
         <ul>
             {% if cat_select == 0 %}
-                <li><a class="select" href="{% url 'index' %}">Все категории</a></li>
+            <li><a class="select" href="{% url 'index' %}">Все категории</a></li>
             {% else %}
-                <li><a href="{% url 'index' %}">Все категории</a></li>
+            <li><a href="{% url 'index' %}">Все категории</a></li>
             {% endif %}
             <li>{% flower_category cat_select %}</li>
         </ul>

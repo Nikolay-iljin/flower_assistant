@@ -1,9 +1,9 @@
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
-from flowers.forms import ProductFilterForm
+from flowers.forms import ProductFilterForm, AddPageForm
 from flowers.models import Flowers, Category
 
 menu = [{'title': "Главная страница", 'url_name': 'index'},
@@ -31,13 +31,6 @@ def index(request):
 
 def about(request):
     data = {'title': 'О нас',
-            'menu': menu,
-            'posts': data_db}
-    return render(request, 'flowers/about.html', data)
-
-
-def add_page(request):
-    data = {'title': 'Добавить страницу',
             'menu': menu,
             'posts': data_db}
     return render(request, 'flowers/about.html', data)
@@ -95,3 +88,17 @@ def flower_search(request):
 
     return render(request, 'flowers/search.html', {'results': results, 'query': request.GET.get('query_text', '')})
 
+
+def add_page(request):
+    if request.method == 'POST':
+        form = AddPageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = AddPageForm()
+
+    data = {'title': 'Добавить статью',
+            'menu': menu,
+            'form': form}
+    return render(request, 'flowers/add_page.html', data)

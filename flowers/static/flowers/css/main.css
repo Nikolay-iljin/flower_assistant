@@ -1,41 +1,84 @@
-{% load static %}
-{% load flowers_category %}
+body {
+    background: white;
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'flowers/css/main.css' %}">
-    <title>{{ title }}</title>
-</head>
-<body>
-<header>
-    <nav>
-        {% for m in menu %}
-        <a href="{% url m.url_name %}">{{ m.title }}</a>
-        {% endfor %}
-    </nav>
-</header>
-<aside>
-    <div class="category">
-        <ul>
-            {% if cat_select == 0 %}
-                <li><a class="select" href="{% url 'index' %}">Все категории</a></li>
-            {% else %}
-                <li><a href="{% url 'index' %}">Все категории</a></li>
-            {% endif %}
-            <li>{% flower_category cat_select %}</li>
-        </ul>
-    </div>
-</aside>
-<main>
-    <div class="content-text">
-        {% block content %}
-        {% endblock %}
-    </div>
-</main>
-<footer></footer>
-</body>
-</html>
+header{
+    margin-left: auto;
+    background: #181818;
+    width: 100%;
+    padding: 0.5%;
+    height: 10vh;
+    color: #BC8F8F;
+    border-bottom: 5px solid #4d4d4d;
+    position: fixed;
+}
+
+header nav a{
+    left:200px;
+    top: 0px;
+    font-weight: bold;
+    position: relative;
+    font-size: 30px;
+    color: #FF8C00;
+    padding-right: 100px;
+    text-decoration: none;
+}
+.content {
+    color: black;
+    border-bottom: 1px solid #DDA0DD;
+}
+
+
+.content-text {
+    margin-left: 380px;
+    padding-top: 100px;
+	color: #000;
+	font-size: 25px;
+	font-family: Yandex Sans Display Light;
+}
+
+.list-content li {
+    list-style: none;
+	border-bottom: 1px solid #ccc;
+}
+
+aside{
+    position: fixed;
+    float: left;
+    background: #313033;
+    width: 20%;
+    padding: 0.5%;
+    margin-top: 4.8%;
+    height: 100vh;
+    color: white;
+    border-right: 5px solid #4d4d4d;
+}
+
+aside div.category ul{
+    list-style: none;
+}
+
+aside div.category ul a{
+    font-size:25px;
+    color: orange;
+    display: block;
+    margin-top: 30px;
+    transition: all .6s;
+    text-decoration: none;
+}
+
+aside div.category ul a:hover, aside ul.category li:hover{
+    color: red;
+    transform: scale(1.05);
+
+    }
+
+aside div.category ul li a.select {
+    color: green;
+
+}
+
+aside div.category ul li.select {
+    color: green;
+    font-size: 30px;
+}

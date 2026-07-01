@@ -5,15 +5,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
+from users.forms import RegisterUserForm
+
 
 class LoginUser(LoginView):
     form_class = AuthenticationForm
     template_name = 'users/login.html'
     extra_context = {'title': 'Авторизация'}
-
-
-class RegisterUserForm:
-    pass
 
 
 def register(request):
@@ -27,7 +25,6 @@ def register(request):
     else:
         form = RegisterUserForm()
     return render(request, 'users/register.html', {'form': form})
-
 
 
 def logout_user(request):

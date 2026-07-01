@@ -1,3 +1,5 @@
+import uuid
+
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.http import HttpResponse

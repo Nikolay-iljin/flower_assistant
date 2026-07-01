@@ -1,5 +1,7 @@
+from django.conf.urls.static import static
 from django.urls import path
 
+from flower_assistant import settings
 from flowers import views
 
 urlpatterns = [
@@ -11,3 +13,5 @@ urlpatterns = [
     path('category/<slug:cat_slug>/', views.show_category, name='category'),
     path('search/', views.flower_search, name='search'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

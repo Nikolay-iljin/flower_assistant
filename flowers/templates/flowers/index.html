@@ -5,6 +5,9 @@
 <div class="content">
     {% for m in posts %}
         <strong>{{ m.name }}</strong>
+        {% if m.photo %}
+        <p><img class="left-photo-post" src="{{m.photo.url}}"></p>
+        {% endif %}
         <p>{{ m.content | truncatewords:20}}</p>
         <p><a href="{{ m.get_absolute_url }}">Читать пост</a></p>
 {% if not forloop.last%}

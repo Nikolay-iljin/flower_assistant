@@ -15,14 +15,14 @@ class LoginUserForm(AuthenticationForm):
 class RegisterUserForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='Имя пользователя')
     password = forms.CharField(max_length=20, label='Пароль')
-    password2 = forms.CharField(max_length=20, label='Повтори парль')
+    password2 = forms.CharField(max_length=20, label='Повторить парль')
 
     class Meta:
         model = get_user_model()
         fields = ['username', 'password', 'password2', 'email', 'first_name', 'last_name']
         labels = {'email': 'E-mail', 'first_name': 'Имя', 'last_name': 'Фамилия'}
 
-    def clean_password(self):
+    def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Пароли не совпадают!')

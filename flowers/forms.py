@@ -22,21 +22,17 @@ class AddPageForm(forms.ModelForm):
         name = self.cleaned_data['name']
         ALLOWED_CHARS = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюя0123456789- '
         if not all(char in ALLOWED_CHARS for char in name):
-            raise ValidationError('Пошел нах')
+            raise ValidationError('Не правильный ввод')
         return name
 
     def clean_about(self):
         about = self.cleaned_data['about']
-        if len(about) < 3:
+        if len(about) < 10:
             raise ValidationError("Очень мало слов!")
         return about
 
     class Meta:
         model = Flowers
         fields = ['name', 'slug', 'content', 'cat', 'photo']
-        # widgets = {'name': forms.TextInput(attrs={'class': 'form-input'}),
-        #            'slug': forms.TextInput(attrs={'class': 'form-slug'}),
-        #            'about': forms.Textarea(attrs={'class': 'form-area', 'cols': 50, 'rows': 5})}
-
-        labels = {'name': 'Заголовок', 'slug': 'URL', 'content': 'Информация об растении', 'photo': 'Фата'}
+        labels = {'name': 'Заголовок', 'slug': 'URL', 'content': 'Информация об растении', 'photo': 'Фота'}
 

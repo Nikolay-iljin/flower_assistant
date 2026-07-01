@@ -29,7 +29,7 @@ header nav .last{
     margin-left: 30px;
     padding-right: 0px;
     color: #00CED1;
-    font-size: 25px;
+    font-size: 27px;
 }
 
 header nav .last:hover {
@@ -100,4 +100,18 @@ aside div.category ul li a.select {
 aside div.category ul li.select {
     color: green;
     font-size: 30px;
+}
+
+.photo-post {
+	max-width: 400px;
+	max-height: 400px;
+	float: left;
+	padding: 0 30px 10px 0;
+}
+
+.left-photo-post{
+	max-width: 200px;
+	max-height: 200px;
+	float: left;
+    padding: 0 80px 10px 0;
 }

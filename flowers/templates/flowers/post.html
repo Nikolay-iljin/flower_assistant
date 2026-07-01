@@ -2,5 +2,8 @@
 
 {% block content %}
     <h1>{{ posts.name }}</h1>
+    {% if posts.photo %}
+    <p><img class="photo-post" src="{{posts.photo.url}}"></p>
+    {% endif %}
     <p>{{ posts.content|linebreaks }}</p>
 {% endblock %}
